@@ -42,7 +42,7 @@
           "fullName": "Jhon Smith",
           "tradeName": "Oklahoma Gas & Electric" 
             }
-          }
+}
         ],
         "requestBody": {
           "required": true,
