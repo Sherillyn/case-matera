@@ -32,7 +32,7 @@
           "aliasType": "EMAIL"
           },
       - "account": {
-          "id": 8f8ad77c-9ffa-4177-95df-619b587c99ca",
+          "id": "8f8ad77c-9ffa-4177-95df-619b587c99ca",
           "type": "CHCK"
           "openingDate": "2020-06-18"
     },
