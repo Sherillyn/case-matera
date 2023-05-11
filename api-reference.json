@@ -26,6 +26,7 @@
             }
           }
     "/accounts/{account_id}/alias": {
+          
       "push": {
         - "accountAlias":  {
           "alias": "johndoe@email.com",
