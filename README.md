@@ -11,7 +11,7 @@ This is an account API, which allows users to create an **alias** in their regis
 In the US financial market, bank account numbers are considered sensitive information and cannot be shared publicly for security reasons. Instead, users can create an alias that represents their bank information. There are three options available for the user to choose from:
 - email
 - phone number
-- randomly generated number.
+- randomly generated number
 
 ## Parameters
 
@@ -38,9 +38,12 @@ It requires the `alias_type` field to be present, with a value of either **email
 
 The responses to the endpoint are either:
 
-200 - successful update
-400 - invalid request body
+200 - successful update;
+
+400 - invalid request body;
+
 404 - bank account that is not found.
+
 
 
 
