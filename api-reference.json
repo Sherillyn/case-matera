@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Account API",
+    "description": "API for registering an alias for a bank account",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com"
+    }
+  ],
+  "paths": {
+    "/accounts/{account_id}/alias": {
+      "put": {
+        "summary": "Update the alias for a bank account",
+        "description": "Updates the alias for a bank account with the given ID",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The ID of the bank account to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AliasRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful update of the alias for the bank account"
+          },
+          "400": {
+            "description": "Invalid request body"
+          },
+          "404": {
+            "description": "The bank account with the given ID was not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AliasRequest": {
+        "type": "object",
+        "properties": {
+          "alias_type": {
+            "type": "string",
+            "description": "The type of alias to use. Valid values are 'email', 'phone', or 'random'"
+          },
+          "alias_value": {
+            "type": "string",
+            "description": "The value to use for the alias. The format depends on the alias type selected. For email, this should be a valid email address. For phone, this should be a valid phone number. For random, this value is ignored."
+          }
+        },
+        "required": [
+          "alias_type"
+        ]
+      }
+    }
+  }
+}
