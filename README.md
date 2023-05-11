@@ -1,8 +1,8 @@
 # API documentation - Matera
 
-> For detailed information, refer to the [API Specification on Redoc](https://tiannamen.redoc.ly/).*
+> For detailed information, refer to the [API Specification on Redoc](https://sharp-bat-92.redoc.ly/).*
 
-*Available until November 22th. After that, it will only be visible with a Redoc user login, which is free.
+*Available until May 25th. After that, it will only be visible with a Redoc user login, which is free.
 
 ## Overview
 
