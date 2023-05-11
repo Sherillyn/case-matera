@@ -25,24 +25,6 @@
               "type": "string"
             }
           }
-    "/accounts/{account_id}/alias": {
-          
-      "push": {
-        - "accountAlias":  {
-          "alias": "johndoe@email.com",
-          "aliasType": "EMAIL"
-          },
-      - "account": {
-          "id": "8f8ad77c-9ffa-4177-95df-619b587c99ca",
-          "type": "CHCK"
-          "openingDate": "2020-06-18"
-    },
-      - "accountOwner": {
-          "id": "0de30f85-084e-4753-953d-4c9217745d16",
-          "fullName": "Jhon Smith",
-          "tradeName": "Oklahoma Gas & Electric" 
-            }
-}
         ],
         "requestBody": {
           "required": true,
