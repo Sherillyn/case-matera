@@ -1,110 +1,139 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Account API",
-    "version": "1.0.0",
-    "description": "API for managing account aliases"
+    "title": "Account Alias API",
+    "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://api.examplebank.com",
-      "description": "Production server"
-    }
-  ],
   "paths": {
-    "/alias": {
+    "/accounts/{account_id}/alias": {
       "post": {
-        "summary": "Create an account alias",
-        "description": "Allows users to register an alias for their bank account",
+        "summary": "Register an alias for a bank account",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account_id",
+            "description": "The ID of the bank account",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "requestBody": {
-          "description": "Alias information",
+          "description": "Alias registration request",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": ["email", "phone", "random"]
-                  },
-                  "value": {
-                    "type": "string"
-                  }
-                },
-                "required": ["type", "value"]
+                "$ref": "#/components/schemas/AliasRegistrationRequest"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Alias created successfully"
-          },
-          "400": {
-            "description": "Invalid request body"
-          },
-          "401": {
-            "description": "Unauthorized access"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      },
-      "get": {
-        "summary": "Retrieve account alias",
-        "description": "Retrieve the registered alias for the account",
-        "responses": {
-          "200": {
-            "description": "Alias retrieved successfully",
+            "description": "Alias registration successful",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "enum": ["email", "phone", "random"]
-                    },
-                    "value": {
-                      "type": "string"
-                    }
-                  },
-                  "required": ["type", "value"]
+                  "$ref": "#/components/schemas/AliasRegistrationResponse"
                 }
               }
             }
           },
-          "401": {
-            "description": "Unauthorized access"
+          "400": {
+            "description": "Invalid request body"
           },
           "404": {
-            "description": "Alias not found"
+            "description": "Bank account not found"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get information about the account alias",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account_id",
+            "description": "The ID of the bank account",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Alias information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AliasInformation"
+                }
+              }
+            }
           },
-          "500": {
-            "description": "Internal server error"
+          "404": {
+            "description": "Bank account not found"
           }
         }
       },
       "delete": {
-        "summary": "Delete account alias",
-        "description": "Delete the registered alias for the account",
+        "summary": "Delete the account alias",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account_id",
+            "description": "The ID of the bank account",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "204": {
-            "description": "Alias deleted successfully"
-          },
-          "401": {
-            "description": "Unauthorized access"
+            "description": "Alias deleted"
           },
           "404": {
-            "description": "Alias not found"
-          },
-          "500": {
-            "description": "Internal server error"
+            "description": "Bank account not found"
           }
         }
       }
     }
-  }
-}
+  },
+  "components": {
+    "schemas": {
+      "AliasRegistrationRequest": {
+        "type": "object",
+        "properties": {
+          "alias_type": {
+            "type": "string",
+            "enum": ["email", "phone_number", "random"]
+          },
+          "alias_value": {
+            "type": "string"
+          }
+        },
+        "required": ["alias_type"]
+      },
+      "AliasRegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "alias_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "AliasInformation": {
+        "type": "object",
+        "properties": {
+          "alias_id": {
+            "type": "integer"
+          },
+          "alias_type": {
+            "type": "string",
+            "enum": ["email", "phone_number", "random"]
+          },
+          "alias_value
 
