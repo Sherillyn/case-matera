@@ -13,36 +13,47 @@ In the US financial market, bank account numbers are considered sensitive inform
 - phone number
 - randomly generated number
 
-## Parameters
-
-The `put_account_id` method contains the following parameter:
-
-|PARAMETER|DESCRIPTION|TYPE|REQUIRED|
-|---|---|---|---|
-|`accountId`|The ID of the bank account to update.|integer|yes|
-
 ## Endpoints
-`/accounts/{account_id}/alias`  - single `put` operation.
+`/alias` - single endpoint that allows you to perform three different actions: create, retrieve and delete an alias.
 
-It expects a request that specifies the type and value to be used by this alias.
-the terminal updates the account alias with the given ID.
 
-## Schemas
+### Parameters
 
-`AliasRequest` - defines the expected format of the request body. 
-It requires the `alias_type` field to be present, with a value of either **email**,**phone** or **random**. 
+- `post` method is used to create an account alias. Contains the following parameter:
 
-> If `alias_type` is email or phone, then the alias_value field must also be present and contain a valid email address or phone number, respectively. If `alias_type` is random, then the `alias_value` field is ignored.
+|PARAMETER|DESCRIPTION|REQUIRED|
+|---|---|---|
+|`type`|Property specifies the type of alias to create and must be one of the following three values: "email", "phone", or "random"|Yes|
+|`valor`|Property specifies the value to use for the alias and must be a string| Yes|
+
+- `get` method is used to retrieve an existing account alias. Contains the following parameter:
+
+|PARAMETER|DESCRIPTION|REQUIRED|
+|---|---|---|
+|`type`| Which specifies the type of alias to retrieve. If this parameter is not provided, the API will return all aliases |Yes|
+ > The response body will be in JSON format and will include two properties: "type" and "value".
+
+- `delete` method is used to delete an existing account alias. Contains the following parameter:
+
+|PARAMETER|DESCRIPTION|REQUIRED|
+|---|---|---|
+|`valor`| Which specifies the value of the alias to delete. If this parameter is not provided, the API will delete all aliases |Yes|
 
 ## Responses
 
-The responses to the endpoint are either:
+Responses include a status number that shows what the outcome of that request was.
 
-200 - successful update;
+201 - alias was successfully created.
 
-400 - invalid request body;
+400 - the request body was invalid.
 
-404 - bank account that is not found.
+401 - the request was unauthorized.
+
+404 - the alias was not found.
+
+500 - there was an internal server error.
+
+> DELETE operation does not have a response body. The API will return a status code of 204 if the deletion is successful.
 
 
 
