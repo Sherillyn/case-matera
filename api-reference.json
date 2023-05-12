@@ -54,6 +54,19 @@
       "get": {
         "summary": "Retrieve account alias",
         "description": "Retrieve the registered alias for the account",
+        "parameters" : [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "returns all elements for given type",
+            "required": false,
+            "schema": {
+              "type": string,
+              "required": ["type"]
+            },
+            
+          }
+        ],
         "responses": {
           "200": {
             "description": "Alias retrieved successfully",
@@ -89,6 +102,16 @@
       "delete": {
         "summary": "Delete account alias",
         "description": "Delete the registered alias for the account",
+        "parameters": [{
+            "name": "value",
+            "in": "query",
+            "description": "Deletes a given value",
+            "required": false,
+            "schema": {
+              "type": string,
+              "required": ["value"]
+            }
+          }],
         "responses": {
           "204": {
             "description": "Alias deleted successfully"
