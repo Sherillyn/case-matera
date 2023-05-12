@@ -135,5 +135,5 @@
             "type": "string",
             "enum": ["email", "phone_number", "random"]
           },
-          "alias_value
+         
 
