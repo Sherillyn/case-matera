@@ -3,14 +3,7 @@
   "info": {
     "title": "Account API",
     "version": "1.0.0",
-    "description": "This is an account API, which allows users to create an alias in their registration.
-  In the US financial market, bank account numbers are considered sensitive information and cannot be shared publicly for security reasons. Instead, users can create an alias that represents their bank information. There are three options available for the user to choose from:
-
-- email
-
-- phone number
-
-- randomly generated number
+    "description": "This is an account API, which allows users to create an alias in their registration.This is  anAPI, for managing account aliases for a financial institution. The API allows users to create an alias for their bank account information instead of using their actual account number for security reasons.
 "
   },
   "servers": [
@@ -136,7 +129,9 @@
           },
           "500": {
             "description": "Internal server error"
-          }
+          },
+
+          
         }
       }
     }
